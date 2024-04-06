@@ -10,3 +10,8 @@ export const validateSchema = (schema) => (req, res, next) => {
       .json(error.errors.map((error) => error.message)); // retorna un error 400 con los mensajes de error no con el error completo
   }
 };
+
+var func = function func() {
+  console.log(func === func)
+}
+func()

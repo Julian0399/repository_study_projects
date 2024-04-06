@@ -9,7 +9,10 @@ import cors from "cors";
 
 // Create an express application
 const app = express();
-app.use(cors({origin: "http://localhost:5173"}))
+app.use(cors({
+    origin: "http://localhost:5173", // para que solo se pueda acceder desde esta url
+    credentials: true // para que se envien las cookies al servidor
+}))
 
 // para ver las petciiones que llegan al servidor en consola
 app.use(morgan("dev"));

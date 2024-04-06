@@ -6,3 +6,4 @@ tailwind
 react router dom
 react hook form
 axios bibliotecha que usa fetch 
+js-cookie

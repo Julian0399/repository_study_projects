@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   const { register, handleSubmit, formState:{errors},} = useForm();
@@ -20,14 +21,16 @@ function RegisterPage() {
   });
 
   return (
-    <div className="bg-zinc-800 max-w-md p-8 rounded-md justify-center ">
+    <div className="flex h-screen items-center justify-center ">
+      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
       {
         registerErrors.map((error,i) => (
-          <div className="bg-red-500 p-2 text-white text-center rounded-md" key={i}>
+          <div className="bg-red-500 p-2 text-white text-center rounded-md my-2" key={i}>
             {error}
           </div>
         ))
       }
+      <h1 className="text-white font-bold text-2xl">Registrate </h1>
       <form onSubmit={onSubmit} className="flex flex-col w-full ">
         <input
           type="text"
@@ -60,6 +63,10 @@ function RegisterPage() {
           Register
         </button>
       </form>
+      <p  className='text-xs mt-2 flex justify-between'>
+        Ya tienes una cuenta? <Link className='text-indigo-400' to="/login">Login</Link>
+      </p>
+      </div>
     </div>
   );
 }
