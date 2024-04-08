@@ -1,7 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
 import Cookies from "js-cookie";
-import { set } from "mongoose";
 
 export const AuthContext = createContext();
 
@@ -40,6 +39,13 @@ export const AuthProvider = ({ children }) => {
       else setError([error.response.data.message]);
     }
   };
+// se crea una funcion para hacer logout
+  const logout = () => {
+    Cookies.remove("token");
+    setIsAutenticated(false);
+    setUser(null);
+  }
+
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
@@ -84,6 +90,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signup,
         signin,
+        logout,
         loading,
         user,
         isAuthenticated,
